@@ -7,7 +7,7 @@ from fastapi import (
     Request,
 )
 from queries.accounts import AccountRepo, DuplicateAccountError
-from models import AccountIn, AccountOut, AccountToken, AccountForm,Account
+from models import AccountIn, AccountOut, AccountToken, AccountForm, Account
 from authenticator import authenticator
 
 router = APIRouter()

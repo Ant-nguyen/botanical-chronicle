@@ -1,4 +1,12 @@
 
+## 2/28/24
+Today we worked on the back end auth
+I took the driver seat today and we all worked together as a group mob programming style.
+We primarily followed some of Riley's notes and lecture to parse an figured out how it worked.
+I felt this was a good opprotunity to learn more about rapid API and get more experience with it
+which was nice. It was also great working with Mongo and getting more experience with the database. 
+
+
 ## 2/27/24
 Today we Started our project
 * Worked on setting up the REPO
