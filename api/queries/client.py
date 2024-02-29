@@ -2,7 +2,7 @@ import os
 from pymongo import MongoClient
 
 client = MongoClient(os.environ.get("DATABASE_URL", ""))
-db = client["accounts-database"]
+db = client["BC-database"]
 
 
 class MongoQueries:

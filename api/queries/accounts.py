@@ -9,7 +9,7 @@ class DuplicateAccountError(ValueError):
 
 
 class AccountRepo(MongoQueries):
-    collection_name = "accounts"
+    collection_name = "Accounts"
 
     def create(self, info: AccountIn, hashed_password: str):
         if self.get(username=info.username) is not None:
