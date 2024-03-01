@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from jwtdown_fastapi.authentication import Token
-from typing import Optional
+from typing import Optional, List
 from datetime import datetime
 
 
@@ -50,7 +50,12 @@ class PlantLogIn(BaseModel):
 
 class PlantLog(PlantLogIn):
     plant_id: str
+    id: str
 
 
 class DeleteStatus(BaseModel):
     success: bool
+
+
+class PlantLogList(BaseModel):
+    plant_logs: List[PlantLog]

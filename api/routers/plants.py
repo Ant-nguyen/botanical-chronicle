@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Depends, HTTPException
-from models import PlantIn, Plant, DeleteStatus, PlantLogIn, PlantLog
+from models import PlantIn, Plant, DeleteStatus
 from queries.plants import PlantQueries
 from authenticator import authenticator
 from typing import List
@@ -25,7 +25,11 @@ def get_all_plants(
 
 
 @router.get("/api/plants/{plant_id}", response_model=Plant)
-def get_plant(plant_id: str, queries: PlantQueries = Depends()):
+def get_plant(
+    plant_id: str,
+    account_data: dict = Depends(authenticator.get_current_account_data),
+    queries: PlantQueries = Depends(),
+):
     plant = queries.get_plant(plant_id)
     if plant is None:
         raise HTTPException(status_code=404, detail="Plant not found")
@@ -33,7 +37,11 @@ def get_plant(plant_id: str, queries: PlantQueries = Depends()):
 
 
 @router.delete("/api/plants/{plant_id}", response_model=DeleteStatus)
-def delete_plant(plant_id: str, queries: PlantQueries = Depends()):
+def delete_plant(
+    plant_id: str,
+    account_data: dict = Depends(authenticator.get_current_account_data),
+    queries: PlantQueries = Depends(),
+):
     return {"success": queries.delete_one(plant_id)}
 
 
