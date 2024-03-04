@@ -45,3 +45,7 @@ class PlantQueries(MongoQueries):
             changes["id"] = plant_id
             changes["account_id"] = account_id
             return Plant(**changes)
+
+    def plant_owner_check(self, plant_id: str):
+        queries = self.get_plant(plant_id)
+        return queries["account_id"]

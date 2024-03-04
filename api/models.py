@@ -59,3 +59,7 @@ class DeleteStatus(BaseModel):
 
 class PlantLogList(BaseModel):
     plant_logs: List[PlantLog]
+
+
+class PlantList(BaseModel):
+    plants: List[Plant]
