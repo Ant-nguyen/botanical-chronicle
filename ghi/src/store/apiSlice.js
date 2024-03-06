@@ -9,10 +9,17 @@ export const bcApi = createApi({
         getToken: builder.query({
             query: () => ({
                 url: '/token',
-                credentials: 'include'
+                credentials: 'include',
+            }),
+        }),
+        createAccount: builder.mutation({
+            query: (data) => ({
+                url: '/api/accounts',
+                body: data,
+                method: 'post',
             }),
         }),
     }),
 })
 
-export const { useGetTokenQuery } = bcApi
+export const { useGetTokenQuery, useCreateAccountMutation } = bcApi
