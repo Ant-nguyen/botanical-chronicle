@@ -1,6 +1,4 @@
-from pydantic import BaseModel
-from typing import List, Optional, Union
-from models import PlantIn, Plant, PlantLogIn, PlantLog
+from models import PlantLogIn
 from queries.client import MongoQueries
 from bson.objectid import ObjectId
 from bson.errors import InvalidId

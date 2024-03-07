@@ -11,6 +11,7 @@ export const bcApi = createApi({
                 url: '/token',
                 credentials: 'include',
             }),
+            providesTags: ['Account'],
         }),
         createAccount: builder.mutation({
             query: (data) => ({
@@ -19,7 +20,37 @@ export const bcApi = createApi({
                 method: 'post',
             }),
         }),
+        loginAccount: builder.mutation({
+            query: (data) => {
+                let formData = null
+                if (data instanceof HTMLElement) {
+                    formData = new FormData(info)
+                } else {
+                    formData = new FormData()
+                    formData.append('username', data.username)
+                    formData.append('password', data.password)
+                }
+                return {
+                    url: '/token',
+                    method: 'post',
+                    body: formData,
+                    credentials: 'include',
+                }
+            },
+            invalidatesTags: ['Account'],
+        }),
+        logoutAccount: builder.mutation({
+            query: () => ({
+                url: '/token',
+                method: 'delete',
+            }),
+        }),
     }),
 })
 
-export const { useGetTokenQuery, useCreateAccountMutation } = bcApi
+export const {
+    useGetTokenQuery,
+    useCreateAccountMutation,
+    useLoginAccountMutation,
+    useLogoutAccountMutation,
+} = bcApi

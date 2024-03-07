@@ -2,7 +2,6 @@ from fastapi import APIRouter, Depends, HTTPException
 from models import PlantIn, Plant, DeleteStatus, PlantList
 from queries.plants import PlantQueries
 from authenticator import authenticator
-from typing import List
 from queries.plant_logs import PlantLogQueries
 
 router = APIRouter()

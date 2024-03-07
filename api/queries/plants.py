@@ -1,5 +1,3 @@
-from pydantic import BaseModel
-from typing import List, Optional, Union
 from models import PlantIn, Plant
 from queries.client import MongoQueries
 from bson.objectid import ObjectId
