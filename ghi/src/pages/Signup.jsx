@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useCreateAccountMutation, useLoginAccountMutation } from '../store/apiSlice'
+import {
+    useCreateAccountMutation,
+    useLoginAccountMutation,
+} from '../store/apiSlice'
 
 const Signup = () => {
     const [loginAccount, loginResult] = useLoginAccountMutation()
     const [createAccount, result] = useCreateAccountMutation()
-    const [passwordError, setPasswordError] = useState('')
+    const [errorMessage, setErrorMessage] = useState('')
     const [formData, setFormData] = useState({
         username: '',
         email: '',
@@ -16,9 +19,9 @@ const Signup = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault()
-        setPasswordError('')
+        setErrorMessage('')
         if (passwordConfirmation !== formData.password) {
-            setPasswordError('Passwords do not match')
+            setErrorMessage('Passwords do not match')
         } else {
             createAccount(formData)
         }
@@ -26,8 +29,12 @@ const Signup = () => {
 
     useEffect(() => {
         if (result.isSuccess) {
-            loginAccount({username:formData.username, password:formData.password})
+            loginAccount({
+                username: formData.username,
+                password: formData.password,
+            })
         } else if (result.isError) {
+            setErrorMessage(result.error.data.detail)
             console.error('Error:', result.error)
         }
     }, [result])
@@ -49,15 +56,9 @@ const Signup = () => {
             <div className="offset-3 col-6">
                 <div className="shadow p-4 mt-4">
                     <h1>Sign Up</h1>
-
-                    {result.isError && (
+                    {errorMessage && (
                         <div className="alert alert-danger" role="alert">
-                            {result.error.data.detail}
-                        </div>
-                    )}
-                    {passwordError && (
-                        <div className="alert alert-danger" role="alert">
-                            {passwordError}
+                            {errorMessage}
                         </div>
                     )}
 

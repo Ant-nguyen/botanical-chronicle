@@ -43,7 +43,9 @@ export const bcApi = createApi({
             query: () => ({
                 url: '/token',
                 method: 'delete',
+                credentials: 'include',
             }),
+            invalidatesTags: ['Account'],
         }),
     }),
 })
