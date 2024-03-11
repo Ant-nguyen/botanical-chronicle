@@ -13,6 +13,7 @@ export const bcApi = createApi({
             }),
             providesTags: ['Account'],
         }),
+
         createAccount: builder.mutation({
             query: (data) => ({
                 url: '/api/accounts',
@@ -47,6 +48,28 @@ export const bcApi = createApi({
             }),
             invalidatesTags: ['Account'],
         }),
+        createPlant: builder.mutation({
+            query: (data) => ({
+                url: '/api/plants',
+                body: data,
+                method: 'post',
+                credentials: 'include',
+            }),
+            invalidatesTags: ['PlantList'],
+        }),
+        getMyPlantList: builder.query({
+            query: () => ({
+                url: '/api/mine/plants',
+                credentials: 'include',
+            }),
+            providesTags: ['PlantList'],
+        }),
+        getPlant: builder.query({
+            query: (plant_id) => ({
+                url: `/api/plants/${plant_id}`,
+                credentials: 'include',
+            }),
+        }),
     }),
 })
 
@@ -55,4 +78,7 @@ export const {
     useCreateAccountMutation,
     useLoginAccountMutation,
     useLogoutAccountMutation,
+    useCreatePlantMutation,
+    useGetMyPlantListQuery,
+    useGetPlantQuery
 } = bcApi
