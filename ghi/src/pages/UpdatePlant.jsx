@@ -1,6 +1,7 @@
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import ModalWarning from '../components/ModalWarning'
 import {
     useGetPlantQuery,
     useUpdatePlantMutation,
@@ -58,7 +59,7 @@ const UpdatePlant = () => {
 
     const handleDelete = async (event) => {
         event.preventDefault()
-        deletePlant(plant_id)
+        // deletePlant(plant_id)
     }
 
     useEffect(() => {
@@ -80,6 +81,8 @@ const UpdatePlant = () => {
                 <div className="offset-3 col-6">
                     <div className="shadow p-4 mt-4">
                         <h1>Edit Your Plant</h1>
+
+                        <ModalWarning />
 
                         <form id="plant-form">
                             <div className="form-floating mb-3">
@@ -143,6 +146,8 @@ const UpdatePlant = () => {
                                     </button>
                                     <button
                                         onClick={handleDelete}
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#staticBackdrop"
                                         className="btn btn-danger col-md-3 ms-auto"
                                     >
                                         Delete Plant

@@ -3,7 +3,7 @@ import { useLogoutAccountMutation } from '../store/apiSlice'
 import { useEffect } from 'react'
 import { useGetTokenQuery } from '../store/apiSlice'
 
-function Nav() {
+const Nav = () => {
     const navigate = useNavigate()
     const [logoutAccount, result] = useLogoutAccountMutation()
     const { data: account } = useGetTokenQuery()

@@ -14,7 +14,7 @@ const PlantCard = (plant) => {
                     />
                     <div className="card-body">
                         <h4 className="card-title">{plant.plant.name}</h4>
-                        <h6 className="card-subtitle mb-2 text-body-secondary">
+                        <h6 className="card-subtitle mb-2 text-body-secondary fst-italic">
                             {plant.plant.species}
                         </h6>
                         <p className="card-text">
