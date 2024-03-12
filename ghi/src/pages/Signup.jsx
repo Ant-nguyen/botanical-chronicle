@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import {
     useCreateAccountMutation,
     useLoginAccountMutation,
+    useGetTokenQuery,
 } from '../store/apiSlice'
 
 const Signup = () => {
@@ -16,6 +17,7 @@ const Signup = () => {
     })
     const [passwordConfirmation, setPasswordConfirmation] = useState('')
     const navigate = useNavigate()
+    const {data: loginToken, result: tokenResult} = useGetTokenQuery()
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -28,6 +30,12 @@ const Signup = () => {
     }
 
     useEffect(() => {
+        if (loginToken) {
+            navigate('/')
+        }
+    }, [loginToken])
+
+    useEffect(() => {
         if (result.isSuccess) {
             loginAccount({
                 username: formData.username,
@@ -38,12 +46,6 @@ const Signup = () => {
             console.error('Error:', result.error)
         }
     }, [result])
-
-    useEffect(() => {
-        if (loginResult.isSuccess) {
-            navigate('/')
-        }
-    }, [loginResult])
 
     const handleFormChange = (event) => {
         const key = event.target.name
