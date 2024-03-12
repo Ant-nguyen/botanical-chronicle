@@ -5,6 +5,7 @@ export const bcApi = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: import.meta.env.VITE_API_HOST,
     }),
+
     endpoints: (builder) => ({
         getToken: builder.query({
             query: () => ({
@@ -21,6 +22,7 @@ export const bcApi = createApi({
                 method: 'post',
             }),
         }),
+
         loginAccount: builder.mutation({
             query: (data) => {
                 let formData = null
@@ -38,8 +40,9 @@ export const bcApi = createApi({
                     credentials: 'include',
                 }
             },
-            invalidatesTags: ['Account'],
+            invalidatesTags: ['Account', 'PlantList'],
         }),
+
         logoutAccount: builder.mutation({
             query: () => ({
                 url: '/token',
@@ -48,6 +51,7 @@ export const bcApi = createApi({
             }),
             invalidatesTags: ['Account'],
         }),
+
         createPlant: builder.mutation({
             query: (data) => ({
                 url: '/api/plants',
@@ -57,6 +61,7 @@ export const bcApi = createApi({
             }),
             invalidatesTags: ['PlantList'],
         }),
+
         getMyPlantList: builder.query({
             query: () => ({
                 url: '/api/mine/plants',
@@ -64,11 +69,32 @@ export const bcApi = createApi({
             }),
             providesTags: ['PlantList'],
         }),
+
         getPlant: builder.query({
             query: (plant_id) => ({
                 url: `/api/plants/${plant_id}`,
                 credentials: 'include',
             }),
+            providesTags: ['Plant'],
+        }),
+
+        updatePlant: builder.mutation({
+            query: (data) => ({
+                url: `/api/plants/${data.plant_id}`,
+                credentials: 'include',
+                body: data.form,
+                method: 'put',
+            }),
+            invalidatesTags: ['Plant'],
+        }),
+
+        deletePlant: builder.mutation({
+            query: (plant_id) => ({
+                url: `/api/plants/${plant_id}`,
+                credentials: 'include',
+                method: 'delete',
+            }),
+            invalidatesTags: ['PlantList'],
         }),
     }),
 })
@@ -80,5 +106,7 @@ export const {
     useLogoutAccountMutation,
     useCreatePlantMutation,
     useGetMyPlantListQuery,
-    useGetPlantQuery
+    useGetPlantQuery,
+    useUpdatePlantMutation,
+    useDeletePlantMutation,
 } = bcApi

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useLoginAccountMutation } from '../store/apiSlice'
+import { useLoginAccountMutation, useGetTokenQuery } from '../store/apiSlice'
 import { useNavigate } from 'react-router'
 
 const Login = () => {
@@ -9,6 +9,7 @@ const Login = () => {
         username: '',
         password: '',
     })
+    const { data: loginToken, result: tokenResult } = useGetTokenQuery()
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -22,9 +23,13 @@ const Login = () => {
     }
 
     useEffect(() => {
-        if (result.isSuccess) {
+        if (loginToken) {
             navigate('/')
-        } else if (result.isError) {
+        }
+    }, [loginToken])
+
+    useEffect(() => {
+        if (result.isError) {
             console.error('Error:', result.error)
         }
     }, [result])

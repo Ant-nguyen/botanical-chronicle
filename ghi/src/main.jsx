@@ -10,6 +10,8 @@ import Login from './pages/Login.jsx'
 import Signup from './pages/Signup.jsx'
 import Error from './pages/Error.jsx'
 import PlantDetail from './pages/PlantDetail.jsx'
+import UpdatePlant from './pages/UpdatePlant.jsx'
+
 import { store } from './store/store.js'
 import { Provider } from 'react-redux'
 
@@ -25,6 +27,7 @@ const router = createBrowserRouter([
             { path: 'signup', element: <Signup /> },
             { path: 'plants/add', element: <PlantForm /> },
             { path: 'plants/:plant_id', element: <PlantDetail /> },
+            { path: 'plants/edit/:plant_id', element: <UpdatePlant /> },
         ],
     },
 ])

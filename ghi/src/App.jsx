@@ -3,11 +3,12 @@
 // they are defined or not and throw an appropriate error message
 // const API_HOST = import.meta.env.VITE_API_HOST
 // let url = `${API_HOST}/api/launch-details`
-
-import { Outlet } from "react-router-dom"
+import Nav from './components/Nav'
+import { Outlet } from 'react-router-dom'
 const App = () => {
     return (
         <div>
+            <Nav />
             <Outlet />
         </div>
     )

@@ -1,23 +1,28 @@
 import { useGetTokenQuery, useGetMyPlantListQuery } from '../store/apiSlice'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import Nav from '../components/Nav'
 import PlantCard from '../components/PlantCard'
 
 const Home = () => {
     const { data: account } = useGetTokenQuery()
     const navigate = useNavigate()
-    const { data: plantList, isPlantLoading } = useGetMyPlantListQuery()
+
     useEffect(() => {
         if (account === null) {
             navigate('/onboard')
         }
     }, [account])
 
+    const { data: plantList, isLoading: isPlantLoading } =
+        useGetMyPlantListQuery()
+
+    if (isPlantLoading) {
+        return <h1>Loading...</h1>
+    }
+
     return (
         <div>
-            <Nav />
-            <h1 className='d-flex justify-content-center'>My Garden</h1>
+            <h1 className="d-flex justify-content-center">My Garden</h1>
             <div className="container">
                 <div className="row row-cols-1 row-cols-md-4 g-4">
                     <div className="col">

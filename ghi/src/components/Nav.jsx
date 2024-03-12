@@ -1,14 +1,18 @@
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useLogoutAccountMutation } from '../store/apiSlice'
 import { useEffect } from 'react'
+import { useGetTokenQuery } from '../store/apiSlice'
 
 function Nav() {
     const navigate = useNavigate()
     const [logoutAccount, result] = useLogoutAccountMutation()
+    const { data: account } = useGetTokenQuery()
+
     const logoutClick = async (event) => {
         event.preventDefault()
         logoutAccount()
     }
+
     useEffect(() => {
         if (result.isSuccess) {
             navigate('/')
@@ -16,10 +20,14 @@ function Nav() {
             console.error('Error:', result.error)
         }
     }, [result])
+
     return (
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
             <div className="container-fluid">
-                <NavLink className="navbar-brand" to="/">
+                <NavLink
+                    className="navbar-brand"
+                    to={account ? '/' : '/onboard'}
+                >
                     <img
                         src="https://i.imgur.com/1phSFnw.png"
                         alt="logo"
@@ -45,13 +53,15 @@ function Nav() {
                 >
                     <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li className="d-flex align-items-center nav-item">
-                            <button
-                                type="button"
-                                className="btn btn-outline-danger"
-                                onClick={logoutClick}
-                            >
-                                Log Out
-                            </button>
+                            {account && (
+                                <button
+                                    type="button"
+                                    className="btn btn-outline-danger"
+                                    onClick={logoutClick}
+                                >
+                                    Log Out
+                                </button>
+                            )}
                         </li>
                     </ul>
                 </div>

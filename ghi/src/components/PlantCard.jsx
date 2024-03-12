@@ -4,7 +4,7 @@ const PlantCard = (plant) => {
         <div className="col" key={plant.plant.id}>
             <NavLink
                 className="link-underline link-underline-opacity-0"
-                to= {`/plants/${plant.plant.id}`}
+                to={`/plants/${plant.plant.id}`}
             >
                 <div className="card">
                     <img
@@ -19,7 +19,7 @@ const PlantCard = (plant) => {
                         </h6>
                         <p className="card-text">
                             {plant.plant.detail.length > 150
-                                ? `${plant.plant.detail.slice(0, 150)} . . .`
+                                ? `${plant.plant.detail.slice(0, 150)} ...`
                                 : plant.plant.detail}
                         </p>
                     </div>
