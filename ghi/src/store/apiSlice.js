@@ -4,13 +4,13 @@ export const bcApi = createApi({
     reducerPath: 'bcApi',
     baseQuery: fetchBaseQuery({
         baseUrl: import.meta.env.VITE_API_HOST,
+        credentials: 'include'
     }),
 
     endpoints: (builder) => ({
         getToken: builder.query({
             query: () => ({
                 url: '/token',
-                credentials: 'include',
             }),
             providesTags: ['Account'],
         }),
@@ -37,7 +37,6 @@ export const bcApi = createApi({
                     url: '/token',
                     method: 'post',
                     body: formData,
-                    credentials: 'include',
                 }
             },
             invalidatesTags: ['Account', 'PlantList'],
@@ -47,7 +46,6 @@ export const bcApi = createApi({
             query: () => ({
                 url: '/token',
                 method: 'delete',
-                credentials: 'include',
             }),
             invalidatesTags: ['Account'],
         }),
@@ -57,7 +55,6 @@ export const bcApi = createApi({
                 url: '/api/plants',
                 body: data,
                 method: 'post',
-                credentials: 'include',
             }),
             invalidatesTags: ['PlantList'],
         }),
@@ -65,7 +62,6 @@ export const bcApi = createApi({
         getMyPlantList: builder.query({
             query: () => ({
                 url: '/api/mine/plants',
-                credentials: 'include',
             }),
             providesTags: ['PlantList'],
         }),
@@ -73,7 +69,6 @@ export const bcApi = createApi({
         getPlant: builder.query({
             query: (plant_id) => ({
                 url: `/api/plants/${plant_id}`,
-                credentials: 'include',
             }),
             providesTags: ['Plant'],
         }),
@@ -81,7 +76,6 @@ export const bcApi = createApi({
         updatePlant: builder.mutation({
             query: (data) => ({
                 url: `/api/plants/${data.plant_id}`,
-                credentials: 'include',
                 body: data.form,
                 method: 'put',
             }),
@@ -91,11 +85,26 @@ export const bcApi = createApi({
         deletePlant: builder.mutation({
             query: (plant_id) => ({
                 url: `/api/plants/${plant_id}`,
-                credentials: 'include',
                 method: 'delete',
             }),
             invalidatesTags: ['PlantList'],
         }),
+
+        getPlantLogList: builder.query({
+            query: (plant_id) => ({
+                url: `/api/plants/${plant_id}/plant-logs`
+            }),
+            providesTags: ['PlantLogList']
+        }),
+
+        createPlantLog: builder.mutation({
+            query: (data) => ({
+                url: `/api/plants/${data.plant_id}/plant-logs`,
+                method: 'post',
+                body: data.form,
+            }),
+            invalidatesTags: ['PlantLogList']
+        })
     }),
 })
 
@@ -109,4 +118,6 @@ export const {
     useGetPlantQuery,
     useUpdatePlantMutation,
     useDeletePlantMutation,
+    useGetPlantLogListQuery,
+    useCreatePlantLogMutation,
 } = bcApi

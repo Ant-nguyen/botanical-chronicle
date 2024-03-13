@@ -11,6 +11,7 @@ import Signup from './pages/Signup.jsx'
 import Error from './pages/Error.jsx'
 import PlantDetail from './pages/PlantDetail.jsx'
 import UpdatePlant from './pages/UpdatePlant.jsx'
+import PlantLogForm from './pages/PlantLogForm.jsx'
 
 import { store } from './store/store.js'
 import { Provider } from 'react-redux'
@@ -28,6 +29,7 @@ const router = createBrowserRouter([
             { path: 'plants/add', element: <PlantForm /> },
             { path: 'plants/:plant_id', element: <PlantDetail /> },
             { path: 'plants/edit/:plant_id', element: <UpdatePlant /> },
+            { path: 'plants/:plant_id/plant-logs/add', element: <PlantLogForm /> },
         ],
     },
 ])
