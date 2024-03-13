@@ -1,6 +1,5 @@
-import { NavLink, useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate, useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
 import ModalWarning from '../components/ModalWarning'
 import {
     useGetPlantQuery,

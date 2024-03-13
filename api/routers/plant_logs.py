@@ -50,7 +50,7 @@ def get_plant_log(
 
 
 @router.put(
-    "/api/plants/{plant_id}/plants-logs/{plant_log_id}",
+    "/api/plants/{plant_id}/plant-logs/{plant_log_id}",
     response_model=PlantLog,
 )
 def update_plant_log(
@@ -74,7 +74,7 @@ def update_plant_log(
 
 
 @router.delete(
-    "/api/plants/{plant_id}/plants-logs/{plant_log_id}",
+    "/api/plants/{plant_id}/plant-logs/{plant_log_id}",
     response_model=DeleteStatus,
 )
 def delete_plant_log(

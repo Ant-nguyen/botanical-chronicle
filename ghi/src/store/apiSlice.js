@@ -104,6 +104,30 @@ export const bcApi = createApi({
                 body: data.form,
             }),
             invalidatesTags: ['PlantLogList']
+        }),
+
+        getPlantLogDetail: builder.query({
+            query: (plant_log_id) => ({
+                url: `/api/plants/plant-logs/${plant_log_id}`,
+            }),
+            providesTags: ['PlantLog']
+        }),
+
+        updatePlantLog: builder.mutation({
+            query: (data) => ({
+                url: `/api/plants/${data.plant_id}/plant-logs/${data.plant_log_id}`,
+                body: data.form,
+                method: 'put',
+            }),
+            invalidatesTags: ['PlantLog'],
+        }),
+
+        deletePlantLog: builder.mutation({
+            query: (data) => ({
+                url: `/api/plants/${data.plant_id}/plant-logs/${data.plant_log_id}`,
+                method: 'delete'
+            }),
+            invalidatesTags: ['PlantLog'],
         })
     }),
 })
@@ -120,4 +144,7 @@ export const {
     useDeletePlantMutation,
     useGetPlantLogListQuery,
     useCreatePlantLogMutation,
+    useGetPlantLogDetailQuery,
+    useUpdatePlantLogMutation,
+    useDeletePlantLogMutation,
 } = bcApi
