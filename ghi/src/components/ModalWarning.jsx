@@ -1,21 +1,18 @@
-import { useParams, useNavigate } from 'react-router'
-import { useDeletePlantMutation } from '../store/apiSlice'
+import { useNavigate } from 'react-router'
 import { useEffect } from 'react'
 
-const ModalWarning = () => {
-    const { plant_id } = useParams()
-    const [deletePlant, deleteResult] = useDeletePlantMutation()
+const ModalWarning = ({ mutationParams, mutation, navloc }) => {
+    const [deleteMutation, deleteResult] = mutation()
+
     const navigate = useNavigate()
+
     const handleDelete = () => {
-        deletePlant(plant_id)
+        deleteMutation(mutationParams)
     }
 
     useEffect(() => {
         if (deleteResult.isSuccess) {
-            navigate('/')
-        } else if (deleteResult.isError) {
-            setErrorMessage(deleteResult.error.data.detail)
-            console.error('Error:', deleteResult.error)
+            navigate(navloc)
         }
     }, [deleteResult])
 

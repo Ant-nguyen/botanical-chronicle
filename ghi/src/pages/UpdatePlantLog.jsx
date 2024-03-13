@@ -5,7 +5,6 @@ import {
     useUpdatePlantLogMutation,
     useDeletePlantLogMutation,
     useGetPlantLogDetailQuery,
-    useUpdatePlantMutation,
 } from '../store/apiSlice'
 
 const UpdatePlantLog = () => {
@@ -13,17 +12,22 @@ const UpdatePlantLog = () => {
     const navigate = useNavigate()
     const { data: plantLog, isLoading } =
         useGetPlantLogDetailQuery(plant_log_id)
-    // const { updatePlantLog, result } = useUpdatePlantMutation()
+
     const [plantLogForm, setPlantLogForm] = useState({
         date: '',
         watering: '',
         weather: '',
         condition: '',
     })
-    const [ updatePlantLog, result ] = useUpdatePlantLogMutation()
+    const [updatePlantLog, result] = useUpdatePlantLogMutation()
+    const [mutationIds, setMutationIds] = useState({})
 
     useEffect(() => {
         if (plantLog) {
+            setMutationIds({
+                plant_id: plantLog.plant_id,
+                plant_log_id: plant_log_id,
+            })
             setPlantLogForm({
                 date: plantLog.date,
                 watering: plantLog.watering,
@@ -48,6 +52,9 @@ const UpdatePlantLog = () => {
         }
         updatePlantLog(data)
     }
+    const handleDelete = (event) => {
+        event.preventDefault()
+    }
 
     useEffect(() => {
         if (result.isSuccess) {
@@ -69,7 +76,11 @@ const UpdatePlantLog = () => {
                             {errorMessage}
                         </div>
                     )} */}
-
+                    <ModalWarning
+                        mutationParams={mutationIds}
+                        mutation={useDeletePlantLogMutation}
+                        navloc={`/plants/${mutationIds.plant_id}`}
+                    />
                     <form id="date">
                         <div className="form-floating mb-3">
                             <input
@@ -130,7 +141,12 @@ const UpdatePlantLog = () => {
                             >
                                 Edit
                             </button>
-                            <button className="btn btn-danger col-md-3 ms-auto">
+                            <button
+                                onClick={handleDelete}
+                                data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop"
+                                className="btn btn-danger col-md-3 ms-auto"
+                            >
                                 Delete Log
                             </button>
                         </div>

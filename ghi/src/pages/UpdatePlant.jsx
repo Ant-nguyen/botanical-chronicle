@@ -12,7 +12,6 @@ const UpdatePlant = () => {
     const { data: plant, isLoading: isPlantLoading } =
         useGetPlantQuery(plant_id)
     const [updatePlant, result] = useUpdatePlantMutation()
-    const [deletePlant, deleteResult] = useDeletePlantMutation()
     const navigate = useNavigate()
     const [plantForm, setPlantForm] = useState({
         name: '',
@@ -58,17 +57,8 @@ const UpdatePlant = () => {
 
     const handleDelete = async (event) => {
         event.preventDefault()
-        // deletePlant(plant_id)
     }
 
-    useEffect(() => {
-        if (deleteResult.isSuccess) {
-            navigate('/')
-        } else if (deleteResult.isError) {
-            setErrorMessage(deleteResult.error.data.detail)
-            console.error('Error:', deleteResult.error)
-        }
-    }, [deleteResult])
 
     if (isPlantLoading) {
         return <h1>Loading...</h1>
@@ -81,7 +71,11 @@ const UpdatePlant = () => {
                     <div className="shadow p-4 mt-4">
                         <h1>Edit Your Plant</h1>
 
-                        <ModalWarning />
+                        <ModalWarning
+                            mutationParams={plant_id}
+                            mutation={useDeletePlantMutation}
+                            navloc={'/'}
+                        />
 
                         <form id="plant-form">
                             <div className="form-floating mb-3">

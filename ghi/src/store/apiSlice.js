@@ -4,7 +4,7 @@ export const bcApi = createApi({
     reducerPath: 'bcApi',
     baseQuery: fetchBaseQuery({
         baseUrl: import.meta.env.VITE_API_HOST,
-        credentials: 'include'
+        credentials: 'include',
     }),
 
     endpoints: (builder) => ({
@@ -92,9 +92,9 @@ export const bcApi = createApi({
 
         getPlantLogList: builder.query({
             query: (plant_id) => ({
-                url: `/api/plants/${plant_id}/plant-logs`
+                url: `/api/plants/${plant_id}/plant-logs`,
             }),
-            providesTags: ['PlantLogList']
+            providesTags: ['PlantLogList'],
         }),
 
         createPlantLog: builder.mutation({
@@ -103,14 +103,14 @@ export const bcApi = createApi({
                 method: 'post',
                 body: data.form,
             }),
-            invalidatesTags: ['PlantLogList']
+            invalidatesTags: ['PlantLogList'],
         }),
 
         getPlantLogDetail: builder.query({
             query: (plant_log_id) => ({
                 url: `/api/plants/plant-logs/${plant_log_id}`,
             }),
-            providesTags: ['PlantLog']
+            providesTags: ['PlantLog'],
         }),
 
         updatePlantLog: builder.mutation({
@@ -125,10 +125,10 @@ export const bcApi = createApi({
         deletePlantLog: builder.mutation({
             query: (data) => ({
                 url: `/api/plants/${data.plant_id}/plant-logs/${data.plant_log_id}`,
-                method: 'delete'
+                method: 'delete',
             }),
-            invalidatesTags: ['PlantLog'],
-        })
+            invalidatesTags: ['PlantLogList'],
+        }),
     }),
 })
 

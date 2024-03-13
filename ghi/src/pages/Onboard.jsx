@@ -14,7 +14,7 @@ const Onboard = () => {
     return (
         <div className="container">
             <div className="d-flex justify-content-center">
-                <img src="https://i.imgur.com/TheK8jr.png" />
+                <img className="img-fluid" width="50% "src="https://i.imgur.com/uFNsXKZ.png" />
             </div>
             <div className="d-flex justify-content-center">
                 <button onClick={signupClick} className="btn btn-primary">

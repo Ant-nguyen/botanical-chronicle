@@ -10,7 +10,7 @@ const PlantCard = (plant) => {
                     <img
                         src="https://i.imgur.com/qQiNxzB.png"
                         className="card-img-top"
-                        alt="..."
+                        alt="Picture of a plant"
                     />
                     <div className="card-body">
                         <h4 className="card-title">{plant.plant.name}</h4>
