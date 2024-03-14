@@ -119,7 +119,7 @@ export const bcApi = createApi({
                 body: data.form,
                 method: 'put',
             }),
-            invalidatesTags: ['PlantLog'],
+            invalidatesTags: ['PlantLog', "PlantLogList"],
         }),
 
         deletePlantLog: builder.mutation({

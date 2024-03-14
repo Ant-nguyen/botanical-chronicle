@@ -16,16 +16,27 @@ const PlantLogList = (plant) => {
                 <thead>
                     <tr>
                         <th scope="col">Date</th>
-                        <th scope="col">Button Column</th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
                     {plantLogList.plant_logs.map((plant_log) => (
                         <tr key={plant_log.id}>
-                            <td>{new Date(plant_log.date).toLocaleString()}</td>
+                            <td>
+                                {new Date(plant_log.date).toLocaleString(
+                                    'en-US',
+                                    {
+                                        year: 'numeric',
+                                        month: 'short',
+                                        day: 'numeric',
+                                        hour: 'numeric',
+                                        minute: 'numeric',
+                                    }
+                                )}
+                            </td>
                             <td>
                                 <NavLink to={`/plant-logs/${plant_log.id}`}>
-                                    <button className="btn btn-primary">
+                                    <button className="btn btn-dark">
                                         Details
                                     </button>
                                 </NavLink>
