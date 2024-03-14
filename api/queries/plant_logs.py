@@ -20,7 +20,7 @@ class PlantLogQueries(MongoQueries):
         for plant_log in self.collection.find({"plant_id": plant_id}):
             plant_log["id"] = str(plant_log["_id"])
             result.append(plant_log)
-        # Sorting list by date from most recent
+        # Sorting list by most recent date
         result.sort(key=lambda x: x["date"])
         return result[::-1]
 
