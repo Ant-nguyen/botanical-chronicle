@@ -21,7 +21,7 @@ class PlantLogQueries(MongoQueries):
             plant_log["id"] = str(plant_log["_id"])
             result.append(plant_log)
         # Sorting list by date from most recent
-        result.sort(key=lambda x:x["date"])
+        result.sort(key=lambda x: x["date"])
         return result[::-1]
 
     def get_plant_log(self, plant_log_id: str):
