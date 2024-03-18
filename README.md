@@ -1,11 +1,17 @@
-# Module3 Project Gamma
+# Botanical Chronicle
+- James Morris
+- Anthony Nguyen
+- Chris Sleeger
+- Lyle Toledo
 
-## Getting started
+Botanical Chronicle -- Plant memories one entry at a time
 
-You have a project repository, now what? The next section
-lists all of the deliverables that are due at the end of the
-week. Below is some guidance for getting started on the
-tasks for this week.
+# Design
+    -[Wireframe](docs/BotanicalChronicleWireframe.png)
+    -[Data model](docs/data-model.md)
+    -[API designs](docs/apis.md)
+
+
 
 ## Install Extensions
 
