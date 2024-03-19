@@ -1,178 +1,98 @@
 # Botanical Chronicle
-- James Morris
-- Anthony Nguyen
-- Chris Sleeger
-- Lyle Toledo
 
-Botanical Chronicle -- Plant memories one entry at a time
+-   James Morris
+-   Anthony Nguyen
+-   Chris Sleeger
+-   Lyle Toledo
+
+Botanical Chronicle - Plant memories one entry at a time
 
 # Design
-    -[Wireframe](docs/BotanicalChronicleWireframe.png)
-    -[Data model](docs/data-model.md)
-    -[API designs](docs/apis.md)
 
+-   [Wireframe](docs/BotanicalChronicleWireframe.png)
+-   [Data model](docs/data-model.md)
+-   [API designs](docs/apis.md)
 
+## Intended market
 
-## Install Extensions
+We are targeting people who are passionate about growing their plants and want to keep records of their plants.
 
--   Prettier: <https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode>
--   Black Formatter: <https://marketplace.visualstudio.com/items?itemName=ms-python.black-formatter>
+## Functionality
 
-## Deliverables
+-   Create an account
+    -   Only user who signed up can access the webpage
+    -   Have access to your own virtual garden
+-   Plants
+    -   Name your plant
+    -   Record the species of your plant
+    -   Post a picture of your plant by providing a URL
+    -   Write a brief description or your history with your plant
+-   Plant Logs
+    -   Insert the date you wrote your entry
+    -   Enter the amount of water you gave your plant (if any)
+    -   State the weather it was on that date
+    -   Give a brief description of the condition of your plant
 
--   [ ] Wire-frame diagrams
--   [ ] API documentation
--   [ ] Project is deployed to Caprover (BE, DB) & GitLab-pages (FE)
--   [ ] GitLab issue board is setup and in use (or project management tool of choice)
--   [ ] Journals
+## Tech Stack
 
-## Project layout
+-   MongoDB
+-   React + Redux
+-   FastAPI
+-   Docker
+-   Bootstrap
 
-The layout of the project is just like all of the projects
-you did with `docker-compose` in module #2. You will create
-a directory in the root of the repository for each service
-that you add to your project just like those previous
-projects were setup.
+## Project Initialization
 
-### Directories
+1. Clone the forked repository onto your local computer:
+   git clone <https://gitlab.com/botanyboys/botanical-chronicle>
 
-Several directories have been added to your project. The
-directories `docs` and `journals` are places for you and
-your team-mates to, respectively, put any documentation
-about your project that you create and to put your
-project-journal entries. See the _README.md_ file in each
-directory for more info.
+2. In the same directory level as the docker-compose.yaml file, create a new file titled .env.
+3. Generate an environment signing key and input it into the .env file.
 
-The other directories, `ghi` and `api`, are services, that
-you can start building off of.
+    Example:
 
-Inside of `ghi` is a minimal React app that has an "under construction" page.
-This app is written using the [Vite](https://vitejs.dev/) bundler. The example
-code is also using [jsdoc](https://jsdoc.app/) to provide type hints for
-JavaScript. You are not required to use JSDoc yourself, and you will be removing
-these examples and providing your own code for `App.jsx`
+    `ENV_SIGNING_KEY = 6d8f2c1a9c3e7f5b1e3d6c8a7f9b2d4e1c5a6d3f7b9e2c4a1d6f8b3c5e7a9d`
 
-Inside of `api` is a minimal FastAPI application.
-"Where are all the files?" you might ask? Well, the
-`main.py` file is the whole thing, and go take look inside
-of it... There's not even much in there..., hmm? That is
-FastAPI, we'll learn more about it in the coming days. Can
-you figure out what this little web-application does even
-though you haven't learned about FastAPI yet?
+4. Build and run the project using Docker with these commands:
 
-Also in `api` is a directory for your migrations.
-If you choose to use PostgreSQL, then you'll want to use
-migrations to control your database. Unlike Django, where
-migrations were automatically created for you, you'll write
-yours by hand using DDL. Don't worry about not knowing what
-DDL means; we have you covered. There's a sample migration
-in there that creates two tables so you can see what they
-look like.
-
-The Dockerfile and Dockerfile.dev run your migrations
-for you automatically.
-
-### Installing python dependencies locally
-
-In order for VSCode's built in code completion and intelligence to
-work correctly, it needs the dependencies from the requirements.txt file
-installed. We do this inside docker, but not in the workspace.
-
-So we need to create a virtual environment and pip install the requirements.
-
-From inside the `api` folder:
-
-```bash
-python -m venv .venv
+```
+docker volume create mongo-db
+docker-compose build
+docker-compose up
 ```
 
-Then activate the virtual environment
+5. After running these commands, make sure all of your Docker containers are running
 
-```bash
-source .venv/bin/activate
+6. View Botanical Chronicle in the browser: http://localhost:5173/
+
+## User Story
+
+```
+Feature: Add a plant to my garden
+As a plant enthusiast
+I want to track the status of my plants
+So that I can ensure they receive the proper care and maintain their health
+Scenario: Add a new plant to "My Garden"
+Given I am logged in to Botanical Chronicle
+And I am on the "My Garden" page
+When I tap on the "Add New Plant" button
+Then I should see a form to enter plant details
+When I enter the following details:
+| Field | Value |
+| Plant Name | Monty |
+| Species | Monstera |
+| Picture | https://example.com/ficus-benjamina.jpg |
+| Description | A beautiful indoor plant with glossy leaves |
+And I tap on the "Create" button
+Then the plant should be added to "My Garden"
+And I should be redirected to the "My Garden" page
 ```
 
-And finally install the dependencies
+## Stretch Goals
 
-```bash
-pip install -r requirements.txt
-```
-
-Then make sure the venv is selected in VSCode by checking the lower right of the
-VSCode status bar
-
-### Other files
-
-The following project files have been created as a minimal
-starting point. Please follow the guidance for each one for
-a most successful project.
-
--   `docker-compose.yaml`: there isn't much in here, just a
-    **really** simple UI and FastAPI service. Add services
-    (like a database) to this file as you did with previous
-    projects in module #2.
--   `.gitlab-ci.yml`: This is your "ci/cd" file where you will
-    configure automated unit tests, code quality checks, and
-    the building and deployment of your production system.
-    Currently, all it does is deploy an "under construction"
-    page to your production UI on GitLab and a sample backend
-    to CapRover. We will learn much more about this file.
--   `.gitignore`: This is a file that prevents unwanted files
-    from getting added to your repository, files like
-    `pyc` files, `__pycache__`, etc. We've set it up so that
-    it has a good default configuration for Python projects.
--   `.env.sample`: This file is a template to copy when
-    creating environment variables for your team. Create a
-    copy called `.env` and put your own passwords in here
-    without fear of it being committed to git (see `.env`
-    listed in `.gitignore`). You can also put team related
-    environment variables in here, things like api and signing
-    keys that shouldn't be committed; these should be
-    duplicated in your deployed environments.
-
-## How to complete the initial deploy
-
-There will be further guidance on completing the initial
-deployment, but it just consists of these steps:
-
-### Setup GitLab repo/project
-
--   make sure this project is in a group. If it isn't, stop
-    now and move it to a GitLab group
--   remove the fork relationship: In GitLab go to:
-
-    Settings -> General -> Advanced -> Remove fork relationship
-
--   add these GitLab CI/CD variables:
-    -   PUBLIC_URL : this is your gitlab pages URL
-    -   VITE_APP_API_HOST: enter "blank" for now
-
-#### Your GitLab pages URL
-
-You can't find this in GitLab until after you've done a deploy
-but you can figure it out yourself from your GitLab project URL.
-
-If this is your project URL
-
-https://gitlab.com/GROUP_NAME/PROJECT_NAME
-
-then your GitLab pages URL will be
-
-https://GROUP_NAME.gitlab.io/PROJECT_NAME
-
-### Initialize CapRover
-
-1. Attain IP address and domain from an instructor
-1. Follow the steps in the CD Cookbook in Learn.
-
-### Update GitLab CI/CD variables
-
-Copy the service URL for your CapRover service and then paste
-that into the value for the REACT_APP_API_HOST CI/CD variable
-in GitLab.
-
-### Deploy it
-
-Merge a change into main to kick off the initial deploy. Once the build pipeline
-finishes you should be able to see an "under construction" page on your GitLab
-pages site.
+-   Watering Notification
+-   Plant Third-Party API to populate species info
+-   Calendar integration
+-   Plant Memory Forest
+    -   A separate group of plants that are no longer there
+-   Public Garden
