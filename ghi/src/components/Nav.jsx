@@ -22,7 +22,10 @@ const Nav = () => {
     }, [result])
 
     return (
-        <nav className="navbar navbar-expand-lg bg-body-tertiary">
+        <nav
+            className="navbar navbar-expand-lg "
+            style={{ backgroundColor: '#F2F2F2' }}
+        >
             <div className="container-fluid">
                 <NavLink
                     className="navbar-brand"
