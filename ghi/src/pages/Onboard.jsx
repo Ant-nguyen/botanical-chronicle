@@ -39,7 +39,7 @@ const Onboard = () => {
                     />
                 </div>
                 <div className="d-flex justify-content-center">
-                    <h7 className="display-6">Plant memories,</h7>
+                    <h5 className="display-6">Plant memories,</h5>
                 </div>
                 <div className="d-flex justify-content-center">
                     <h6 className="display-6 cormorant-garamond-light">
