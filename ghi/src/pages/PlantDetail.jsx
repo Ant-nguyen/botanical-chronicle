@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom'
-import { useGetPlantQuery } from '../store/apiSlice'
+import { useGetPlantQuery, useGetTokenQuery } from '../store/apiSlice'
 import { NavLink } from 'react-router-dom'
 import PlantLogList from '../components/PlantLogList'
 
@@ -7,6 +7,8 @@ const PlantDetail = () => {
     const { plant_id } = useParams()
     const { data: plant, isLoading: isPlantLoading } =
         useGetPlantQuery(plant_id)
+    const { data: token } = useGetTokenQuery()
+
     if (isPlantLoading) {
         return <h1>Loading...</h1>
     }
@@ -37,20 +39,28 @@ const PlantDetail = () => {
                     <p className="d-flex justify-content-center">
                         {plant.detail}
                     </p>
-                    <NavLink
-                        className="d-flex justify-content-center link-underline link-underline-opacity-0"
-                        to={`/plants/edit/${plant_id}`}
-                    >
-                        <button className="btn btn-success">Edit Plant</button>
-                    </NavLink>
+                    {token.account.id === plant.account_id && (
+                        <NavLink
+                            className="d-flex justify-content-center link-underline link-underline-opacity-0"
+                            to={`/plants/edit/${plant_id}`}
+                        >
+                            <button className="btn btn-success">
+                                Edit Plant
+                            </button>
+                        </NavLink>
+                    )}
                 </div>
-                <div className='border container rounded mt-2'>
+                <div className="border container rounded mt-2">
                     <PlantLogList />
                 </div>
 
-                <NavLink to={`/plants/${plant_id}/plant-logs/add`}>
-                    <button className="btn btn-success">Add Plant Log</button>
-                </NavLink>
+                {token.account.id === plant.account_id && (
+                    <NavLink to={`/plants/${plant_id}/plant-logs/add`}>
+                        <button className="btn btn-success">
+                            Add Plant Log
+                        </button>
+                    </NavLink>
+                )}
             </div>
         </>
     )

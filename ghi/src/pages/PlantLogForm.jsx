@@ -1,7 +1,6 @@
 import { useNavigate, useParams } from 'react-router-dom'
-import { useCreatePlantLogMutation } from "../store/apiSlice"
-import { useState, useEffect } from "react"
-
+import { useCreatePlantLogMutation } from '../store/apiSlice'
+import { useState, useEffect } from 'react'
 
 const PlantLogForm = () => {
     const { plant_id } = useParams()
@@ -16,7 +15,7 @@ const PlantLogForm = () => {
     const handleFormChange = (event) => {
         const key = event.target.name
         const value = event.target.value
-        setPlantLogForm({ ...plantLogForm, [key]: value})
+        setPlantLogForm({ ...plantLogForm, [key]: value })
     }
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -34,11 +33,6 @@ const PlantLogForm = () => {
             <div className="offset-3 col-6">
                 <div className="shadow p-4 mt-4">
                     <h1>Create a New Plant Log</h1>
-                    {/* {errorMessage && (
-                        <div className="alert alert-danger" role="alert">
-                            {errorMessage}
-                        </div>
-                    )} */}
 
                     <form onSubmit={handleSubmit} id="date">
                         <div className="form-floating mb-3">

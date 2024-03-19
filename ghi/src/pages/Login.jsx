@@ -9,7 +9,7 @@ const Login = () => {
         username: '',
         password: '',
     })
-    const { data: loginToken, result: tokenResult } = useGetTokenQuery()
+    const { data: loginToken } = useGetTokenQuery()
 
     const handleSubmit = async (event) => {
         event.preventDefault()

@@ -1,4 +1,4 @@
-import { NavLink, useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import ModalWarning from '../components/ModalWarning'
 import {
@@ -58,7 +58,6 @@ const UpdatePlant = () => {
     const handleDelete = async (event) => {
         event.preventDefault()
     }
-
 
     if (isPlantLoading) {
         return <h1>Loading...</h1>

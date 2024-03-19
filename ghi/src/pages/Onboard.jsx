@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 const Onboard = () => {
@@ -14,7 +13,11 @@ const Onboard = () => {
     return (
         <div className="container">
             <div className="d-flex justify-content-center">
-                <img className="img-fluid" width="50% "src="https://i.imgur.com/uFNsXKZ.png" />
+                <img
+                    className="img-fluid"
+                    width="50% "
+                    src="https://i.imgur.com/uFNsXKZ.png"
+                />
             </div>
             <div className="d-flex justify-content-center">
                 <button onClick={signupClick} className="btn btn-primary">

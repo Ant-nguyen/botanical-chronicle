@@ -7,7 +7,7 @@ import {
 } from '../store/apiSlice'
 
 const Signup = () => {
-    const [loginAccount, loginResult] = useLoginAccountMutation()
+    const [loginAccount, _loginResult] = useLoginAccountMutation()
     const [createAccount, result] = useCreateAccountMutation()
     const [errorMessage, setErrorMessage] = useState('')
     const [formData, setFormData] = useState({
@@ -17,7 +17,7 @@ const Signup = () => {
     })
     const [passwordConfirmation, setPasswordConfirmation] = useState('')
     const navigate = useNavigate()
-    const {data: loginToken, result: tokenResult} = useGetTokenQuery()
+    const { data: loginToken } = useGetTokenQuery()
 
     const handleSubmit = async (event) => {
         event.preventDefault()

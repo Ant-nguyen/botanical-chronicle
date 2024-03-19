@@ -71,11 +71,6 @@ const UpdatePlantLog = () => {
             <div className="offset-3 col-6">
                 <div className="shadow p-4 mt-4">
                     <h1>Edit Plant Log</h1>
-                    {/* {errorMessage && (
-                        <div className="alert alert-danger" role="alert">
-                            {errorMessage}
-                        </div>
-                    )} */}
                     <ModalWarning
                         mutationParams={mutationIds}
                         mutation={useDeletePlantLogMutation}

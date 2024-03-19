@@ -1,4 +1,4 @@
-import { useNavigate, NavLink, useParams } from 'react-router-dom'
+import { NavLink, useParams } from 'react-router-dom'
 import { useGetPlantLogListQuery } from '../store/apiSlice'
 
 const PlantLogList = (plant) => {

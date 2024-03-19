@@ -1,11 +1,29 @@
-import { NavLink, useParams } from "react-router-dom"
-import { useGetPlantLogDetailQuery } from "../store/apiSlice"
-
+import { NavLink, useParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import {
+    useGetPlantLogDetailQuery,
+    useGetMyPlantListQuery,
+} from '../store/apiSlice'
 
 const PlantLogDetail = () => {
     const { plant_log_id } = useParams()
-    const { data: plantLog, isLoading } = useGetPlantLogDetailQuery(plant_log_id)
-    if (isLoading) {
+    const { data: plantLog, isLoading } =
+        useGetPlantLogDetailQuery(plant_log_id)
+    const { data: plantList, isLoading: plantListLoading } =
+        useGetMyPlantListQuery()
+    const [userPlant, setUserPlant] = useState(false)
+
+    useEffect(() => {
+        if (!isLoading && !plantListLoading) {
+            for (let plant of plantList.plants) {
+                if (plant.id === plantLog.plant_id) {
+                    setUserPlant(true)
+                }
+            }
+        }
+    }, [isLoading, plantListLoading])
+
+    if (isLoading || plantListLoading) {
         return <h1>Loading...</h1>
     }
 
@@ -23,12 +41,12 @@ const PlantLogDetail = () => {
                     />
                 </div>
                 <h1 className="d-flex justify-content-center">
-                    {new Date(plantLog.date).toLocaleString("en-US",{
-                        year: "numeric",
-                        month: "short",
+                    {new Date(plantLog.date).toLocaleString('en-US', {
+                        year: 'numeric',
+                        month: 'short',
                         day: 'numeric',
-                        hour:'numeric',
-                        minute:'numeric'
+                        hour: 'numeric',
+                        minute: 'numeric',
                     })}
                 </h1>
                 <h3 className="d-flex justify-content-center text-body-tertiary fst-italic">
@@ -40,16 +58,19 @@ const PlantLogDetail = () => {
                 <p className="d-flex justify-content-center">
                     Plant Notes: {plantLog.condition}
                 </p>
-                <NavLink
-                    className="d-flex justify-content-center link-underline link-underline-opacity-0"
-                    to={`/plant-logs/edit/${plant_log_id}`}
-                >
-                    <button className="btn btn-success">Edit Plant Log</button>
-                </NavLink>
+                {userPlant && (
+                    <NavLink
+                        className="d-flex justify-content-center link-underline link-underline-opacity-0"
+                        to={`/plant-logs/edit/${plant_log_id}`}
+                    >
+                        <button className="btn btn-success">
+                            Edit Plant Log
+                        </button>
+                    </NavLink>
+                )}
             </div>
         </div>
     )
-
 }
 
 export default PlantLogDetail

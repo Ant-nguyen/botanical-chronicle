@@ -1,6 +1,6 @@
 import { useGetTokenQuery, useGetMyPlantListQuery } from '../store/apiSlice'
 import { NavLink, useNavigate } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import PlantCard from '../components/PlantCard'
 
 const Home = () => {
