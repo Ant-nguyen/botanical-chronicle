@@ -23,7 +23,7 @@ const Onboard = () => {
         >
             <div className="position-absolute top-50 start-50 translate-middle">
                 <div
-                    className="rounded"
+                    className="rounded p-4"
                     style={{
                         backgroundColor: 'black',
                         background: 'rgba(51, 79, 60, 0.7)',
@@ -31,9 +31,9 @@ const Onboard = () => {
                             'inset 0 0 20px rgba(0, 0, 0, 0.4), inset 0 0 40px rgba(255, 255, 255, 0.1)',
                     }}
                 >
-                    <div className="d-flex justify-content-center p-4">
+                    <div className="d-flex justify-content-center">
                         <h5
-                            className="display-1 "
+                            className="display-1 text-center"
                             style={{
                                 fontFamily: "'Abril Fatface', serif",
                                 fontWeight: '400',
@@ -44,9 +44,9 @@ const Onboard = () => {
                             Plant memories
                         </h5>
                     </div>
-                    <div className="d-flex justify-content-center">
+                    <div className="d-flex justify-content-center ">
                         <h6
-                            className="display-2 text-white"
+                            className="display-2 text-white text-center"
                             style={{
                                 fontFamily: "'Cormorant Garamond', serif",
                                 fontWeight: '600',
