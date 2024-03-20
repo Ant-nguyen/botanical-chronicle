@@ -35,7 +35,7 @@ const PlantLogDetail = () => {
             <div className="container">
                 <div className="d-flex justify-content-center">
                     <img
-                        src="https://i.imgur.com/VW3GrYF.png"
+                        src="../public/Plantlog-img.webp"
                         className="img-fluid w-25 h-auto card-img-top rounded"
                         alt="placeholder image"
                     />

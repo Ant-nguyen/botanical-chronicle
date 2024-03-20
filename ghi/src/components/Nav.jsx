@@ -32,7 +32,7 @@ const Nav = () => {
                     to={account ? '/' : '/onboard'}
                 >
                     <img
-                        src="https://i.imgur.com/1phSFnw.png"
+                        src="../public/Logo-trans.webp"
                         alt="logo"
                         width="55"
                         height="55"

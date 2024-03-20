@@ -32,14 +32,14 @@ const Home = () => {
                         >
                             <div className="card">
                                 <img
-                                    src="https://i.imgur.com/o19cPOR.png"
+                                    src="../public/AddPlant.webp"
                                     className="card-img-top"
                                     alt="..."
                                 />
-                                <div className="card-body">
-                                    <h5 className="card-title text-center">
+                                <div className="card-body header-5">
+                                    <p className="card-title text-center h5">
                                         Add New Plant
-                                    </h5>
+                                    </p>
                                 </div>
                             </div>
                         </NavLink>

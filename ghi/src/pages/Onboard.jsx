@@ -1,10 +1,9 @@
 import { useNavigate } from 'react-router-dom'
+import ModalLogin from '../components/ModalLogin'
+
 
 const Onboard = () => {
     const navigate = useNavigate()
-    const loginClick = (event) => {
-        navigate('/login')
-    }
 
     const signupClick = (event) => {
         navigate('/signup')
@@ -15,12 +14,15 @@ const Onboard = () => {
             className="position-relative"
             style={{
                 backgroundSize: 'cover',
-                backgroundImage: "url('https://i.imgur.com/JmTCvtI.jpeg')",
+                backgroundImage:
+                    "url('../public/onboard-bg.webp')",
                 width: '100vw',
                 height: '100vh',
                 paddingRight: '25px',
             }}
         >
+            {' '}
+            <ModalLogin />
             <div className="position-absolute top-50 start-50 translate-middle">
                 <div
                     className="rounded p-4"
@@ -32,7 +34,7 @@ const Onboard = () => {
                     }}
                 >
                     <div className="d-flex justify-content-center">
-                        <h5
+                        <h1
                             className="display-1 text-center"
                             style={{
                                 fontFamily: "'Abril Fatface', serif",
@@ -42,10 +44,10 @@ const Onboard = () => {
                             }}
                         >
                             Plant memories
-                        </h5>
+                        </h1>
                     </div>
                     <div className="d-flex justify-content-center ">
-                        <h6
+                        <h2
                             className="display-2 text-white text-center"
                             style={{
                                 fontFamily: "'Cormorant Garamond', serif",
@@ -54,7 +56,7 @@ const Onboard = () => {
                             }}
                         >
                             one entry at a time
-                        </h6>
+                        </h2>
                     </div>
                 </div>
                 <br></br>
@@ -65,7 +67,12 @@ const Onboard = () => {
                     <button onClick={signupClick} className="btn btn-light">
                         Signup
                     </button>
-                    <button onClick={loginClick} className="btn btn-success">
+                    <button
+                        className="btn btn-success"
+                        data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop"
+                        // onClick={loginClick}
+                    >
                         Login
                     </button>
                 </div>
