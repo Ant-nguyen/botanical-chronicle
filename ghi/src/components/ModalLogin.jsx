@@ -13,8 +13,6 @@ const ModalLogin = () => {
     const handleSubmit = async (event) => {
         event.preventDefault()
         loginAccount(formData)
-
-
     }
 
     const handleFormChange = (event) => {
@@ -26,19 +24,18 @@ const ModalLogin = () => {
     useEffect(() => {
         if (loginToken) {
             navigate('/')
-            const modalElement = document.getElementById('staticBackdrop')
-            const modal = window.bootstrap.Modal.getInstance(modalElement)
-            modal.hide()
         }
     }, [loginToken])
 
     useEffect(() => {
         if (result.isError) {
             console.error('Error:', result.error)
+        } else if (result.isSuccess) {
+            const modalElement = document.getElementById('staticBackdrop')
+            const modal = window.bootstrap.Modal.getInstance(modalElement)
+            modal.hide()
         }
     }, [result])
-
-
 
     return (
         <>
@@ -110,9 +107,7 @@ const ModalLogin = () => {
                                             Password
                                         </label>
                                     </div>
-                                    <button
-                                        className="btn btn-primary"
-                                    >
+                                    <button className="btn btn-primary">
                                         Login
                                     </button>
                                 </form>

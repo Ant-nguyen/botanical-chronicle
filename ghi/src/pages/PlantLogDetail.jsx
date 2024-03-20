@@ -30,9 +30,10 @@ const PlantLogDetail = () => {
     return (
         <div className="m-2">
             <NavLink to={`/plants/${plantLog.plant_id}`}>
-                <button className="btn btn-outline-success">Back</button>
+                <button className="btn btn-success">Back</button>
             </NavLink>
-            <div className="container">
+            <br></br>
+            <div className="container p-2 border" style={{ width: '60vw' }}>
                 <div className="d-flex justify-content-center">
                     <img
                         src="../public/Plantlog-img.webp"
@@ -49,18 +50,32 @@ const PlantLogDetail = () => {
                         minute: 'numeric',
                     })}
                 </h1>
-                <h3 className="d-flex justify-content-center text-body-tertiary fst-italic">
+                <h2
+                    className="d-flex justify-content-center  fst-italic"
+                    style={{ fontFamily: "'Alice', serif", fontWeight: '400' }}
+                >
                     Watering: {plantLog.watering}
-                </h3>
-                <h3 className="d-flex justify-content-center text-body-tertiary fst-italic">
+                </h2>
+                <h3
+                    className=" d-flex justify-content-center fst-italic"
+                    style={{ fontFamily: "'Alice', serif", fontWeight: '400' }}
+                >
                     Weather: {plantLog.weather}
                 </h3>
-                <p className="d-flex justify-content-center">
-                    Plant Notes: {plantLog.condition}
-                </p>
+                <div className="position-relative">
+                    <h4 className="position-absolute start-0">Plant Notes:</h4>
+                </div>
+                <br></br>
+                <br></br>
+                <div className="container">
+                    <p className="">{plantLog.condition}</p>
+                </div>
+            </div>
+            <div className="container p-2 " style={{ width: '60vw' }}>
                 {userPlant && (
                     <NavLink
-                        className="d-flex justify-content-center link-underline link-underline-opacity-0"
+                        className="link-underline link-underline-opacity-0 "
+                        style={{ float: 'right' }}
                         to={`/plant-logs/edit/${plant_log_id}`}
                     >
                         <button className="btn btn-success">

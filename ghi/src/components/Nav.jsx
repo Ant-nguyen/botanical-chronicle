@@ -15,7 +15,7 @@ const Nav = () => {
 
     useEffect(() => {
         if (result.isSuccess) {
-            navigate('/')
+            navigate('/onboard')
         } else if (result.isError) {
             console.error('Error:', result.error)
         }
@@ -32,7 +32,7 @@ const Nav = () => {
                     to={account ? '/' : '/onboard'}
                 >
                     <img
-                        src="../public/Logo-trans.webp"
+                        src="/../public/Logo-trans.webp"
                         alt="logo"
                         width="55"
                         height="55"
