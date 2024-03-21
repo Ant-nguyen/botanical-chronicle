@@ -2,6 +2,7 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import { useLogoutAccountMutation } from '../store/apiSlice'
 import { useEffect } from 'react'
 import { useGetTokenQuery } from '../store/apiSlice'
+import navLogo from '../public/Logo-trans.webp'
 
 const Nav = () => {
     const navigate = useNavigate()
@@ -32,7 +33,7 @@ const Nav = () => {
                     to={account ? '/' : '/onboard'}
                 >
                     <img
-                        src="/../public/Logo-trans.webp"
+                        src= {navLogo}
                         alt="logo"
                         width="55"
                         height="55"

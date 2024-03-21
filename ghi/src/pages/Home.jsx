@@ -2,13 +2,13 @@ import { useGetTokenQuery, useGetMyPlantListQuery } from '../store/apiSlice'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
 import PlantCard from '../components/PlantCard'
-
+import addPlantImg from '../public/AddPlant.webp'
 const Home = () => {
     const { data: account } = useGetTokenQuery()
     const navigate = useNavigate()
 
     useEffect(() => {
-        if (account === null) {
+        if (account === null || account === undefined) {
             navigate('/onboard')
         }
     }, [account, navigate])
@@ -32,7 +32,7 @@ const Home = () => {
                         >
                             <div className="card">
                                 <img
-                                    src="../public/AddPlant.webp"
+                                    src={addPlantImg}
                                     className="card-img-top"
                                     alt="..."
                                 />

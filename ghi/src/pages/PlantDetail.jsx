@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom'
 import { useGetPlantQuery, useGetTokenQuery } from '../store/apiSlice'
 import { NavLink } from 'react-router-dom'
 import PlantLogList from '../components/PlantLogList'
-
+import defaultImg from '../public/DefaultPlant.webp'
 const PlantDetail = () => {
     const { plant_id } = useParams()
     const { data: plant, isLoading: isPlantLoading } =
@@ -20,8 +20,7 @@ const PlantDetail = () => {
                         <img
                             src={plant.picture_url}
                             onError={(event) => {
-                                event.target.src =
-                                    '/../public/DefaultPlant.webp'
+                                event.target.src = defaultImg
                                 event.onerror = null
                             }}
                             className="img-fluid w-25 h-auto rounded"

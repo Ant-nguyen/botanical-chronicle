@@ -4,6 +4,7 @@ import {
     useGetPlantLogDetailQuery,
     useGetMyPlantListQuery,
 } from '../store/apiSlice'
+import plantLogImage from '../public/Plantlog-img.webp'
 
 const PlantLogDetail = () => {
     const { plant_log_id } = useParams()
@@ -36,7 +37,7 @@ const PlantLogDetail = () => {
             <div className="container p-2 border" style={{ width: '60vw' }}>
                 <div className="d-flex justify-content-center">
                     <img
-                        src="../public/Plantlog-img.webp"
+                        src={plantLogImage}
                         className="img-fluid w-25 h-auto card-img-top rounded"
                         alt="placeholder image"
                     />

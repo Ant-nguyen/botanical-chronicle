@@ -1,5 +1,5 @@
 import { useRouteError, NavLink } from 'react-router-dom'
-
+import errorImage from '../public/ErrorImage.webp'
 const Error = () => {
     const error = useRouteError()
 
@@ -9,13 +9,18 @@ const Error = () => {
             <p>Sorry, an unexpected error has occurred.</p>
             <div>
                 <NavLink to={`/`}>
-                    <button className="btn btn-primary">Navigate to Home</button>
+                    <button className="btn btn-primary">
+                        Navigate to Home
+                    </button>
                 </NavLink>
             </div>
-            <img src="https://i.imgur.com/Lfz8nnU.png"></img>
             <p>
+                Page Error:
                 <i>{error.statusText || error.message}</i>
             </p>
+            <div className="container">
+                <img style={{height:"100vh"}}src={errorImage}></img>
+            </div>
         </div>
     )
 }

@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom'
+import defaultImg from '../public/DefaultPlant.webp'
 const PlantCard = (plant) => {
     return (
         <div className="col" key={plant.plant.id}>
@@ -15,7 +16,7 @@ const PlantCard = (plant) => {
                             aspectRatio: 1 / 1,
                         }}
                         onError={(event) => {
-                            event.target.src = '../public/DefaultPlant.webp'
+                            event.target.src = `${defaultImg}`
                             event.onerror = null
                         }}
                         alt="Picture of a plant"
