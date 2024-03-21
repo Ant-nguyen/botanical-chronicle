@@ -25,7 +25,7 @@ const ModalLogin = () => {
         if (loginToken) {
             navigate('/')
         }
-    }, [loginToken])
+    }, [loginToken, navigate])
 
     useEffect(() => {
         if (result.isError) {

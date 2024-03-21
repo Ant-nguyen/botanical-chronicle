@@ -14,7 +14,7 @@ const ModalWarning = ({ mutationParams, mutation, navloc }) => {
         if (deleteResult.isSuccess) {
             navigate(navloc)
         }
-    }, [deleteResult])
+    }, [deleteResult, navigate, navloc])
 
     return (
         <div>
