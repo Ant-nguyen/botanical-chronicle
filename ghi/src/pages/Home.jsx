@@ -11,7 +11,7 @@ const Home = () => {
         if (account === null) {
             navigate('/onboard')
         }
-    }, [account])
+    }, [account, navigate])
 
     const { data: plantList, isLoading: isPlantLoading } =
         useGetMyPlantListQuery()

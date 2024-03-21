@@ -19,7 +19,7 @@ const Nav = () => {
         } else if (result.isError) {
             console.error('Error:', result.error)
         }
-    }, [result])
+    }, [result, navigate])
 
     return (
         <nav

@@ -52,7 +52,7 @@ const UpdatePlant = () => {
         } else if (result.isError) {
             console.error('Error:', result.error)
         }
-    }, [result])
+    }, [result, navigate, plant_id])
 
     const handleDelete = async (event) => {
         event.preventDefault()

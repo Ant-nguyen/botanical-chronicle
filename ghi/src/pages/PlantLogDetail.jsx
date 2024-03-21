@@ -21,7 +21,7 @@ const PlantLogDetail = () => {
                 }
             }
         }
-    }, [isLoading, plantListLoading])
+    }, [isLoading, plantListLoading, plantList, plantLog])
 
     if (isLoading || plantListLoading) {
         return <h1>Loading...</h1>

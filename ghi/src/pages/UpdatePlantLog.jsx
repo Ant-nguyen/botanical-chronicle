@@ -35,7 +35,7 @@ const UpdatePlantLog = () => {
                 condition: plantLog.condition,
             })
         }
-    }, [plantLog])
+    }, [plantLog, plant_log_id])
 
     const handleFormChange = (event) => {
         const key = event.target.name

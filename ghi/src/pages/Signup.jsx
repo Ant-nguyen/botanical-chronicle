@@ -33,7 +33,7 @@ const Signup = () => {
         if (loginToken) {
             navigate('/')
         }
-    }, [loginToken])
+    }, [loginToken, navigate])
 
     useEffect(() => {
         if (result.isSuccess) {
@@ -45,7 +45,7 @@ const Signup = () => {
             setErrorMessage(result.error.data.detail)
             console.error('Error:', result.error)
         }
-    }, [result])
+    }, [result, formData, loginAccount])
 
     const handleFormChange = (event) => {
         const key = event.target.name

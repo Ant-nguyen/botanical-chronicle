@@ -26,7 +26,7 @@ const PlantLogForm = () => {
         if (result.isSuccess) {
             navigate(`/plants/${plant_id}`)
         }
-    }, [result])
+    }, [result, navigate, plant_id])
 
     return (
         <div className="my-5 container">

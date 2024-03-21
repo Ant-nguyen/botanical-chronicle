@@ -30,7 +30,7 @@ const PlantForm = () => {
             setErrorMessage(result.error.data.detail)
             console.error('Error:', result.error)
         }
-    }, [result])
+    }, [result, navigate])
     return (
         <>
             <div className="my-5 container">
