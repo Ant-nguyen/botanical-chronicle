@@ -1,7 +1,7 @@
 import { NavLink, useParams } from 'react-router-dom'
 import { useGetPlantLogListQuery } from '../store/apiSlice'
 
-const PlantLogList = (plant) => {
+const PlantLogList = () => {
     const { plant_id } = useParams()
     const { data: plantLogList, isLoading } = useGetPlantLogListQuery(plant_id)
 

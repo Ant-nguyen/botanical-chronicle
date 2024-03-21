@@ -50,7 +50,6 @@ const UpdatePlant = () => {
         if (result.isSuccess) {
             navigate(`/plants/${plant_id}`)
         } else if (result.isError) {
-            setErrorMessage(result.error.data.detail)
             console.error('Error:', result.error)
         }
     }, [result])

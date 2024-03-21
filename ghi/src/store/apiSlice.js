@@ -27,7 +27,7 @@ export const bcApi = createApi({
             query: (data) => {
                 let formData = null
                 if (data instanceof HTMLElement) {
-                    formData = new FormData(info)
+                    formData = new FormData(data)
                 } else {
                     formData = new FormData()
                     formData.append('username', data.username)

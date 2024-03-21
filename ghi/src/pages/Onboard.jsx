@@ -4,7 +4,7 @@ import ModalLogin from '../components/ModalLogin'
 const Onboard = () => {
     const navigate = useNavigate()
 
-    const signupClick = (event) => {
+    const signupClick = () => {
         navigate('/signup')
     }
 

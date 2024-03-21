@@ -7,7 +7,7 @@ import {
 } from '../store/apiSlice'
 
 const Signup = () => {
-    const [loginAccount, _loginResult] = useLoginAccountMutation()
+    const [loginAccount] = useLoginAccountMutation()
     const [createAccount, result] = useCreateAccountMutation()
     const [errorMessage, setErrorMessage] = useState('')
     const [formData, setFormData] = useState({
