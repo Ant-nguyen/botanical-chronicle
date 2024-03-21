@@ -11,20 +11,25 @@ stages:
 tests:
     image: python:3-bullseye
     stage: test
+    variables:
+        DATABASE_URL: "Aurl"
+        DB_NAME: "BCmongodb"
+        SIGNING_KEY : "secret"
+
     script:
         - pip install flake8
         - flake8 api
         # Run unit tests
-        # - cd api
-        # - pip install -r requirements.txt
-        # - python -m pytest
+        - cd api
+        - pip install -r requirements.txt
+        - python -m pytest
 # # Build API Image:
 # # This job builds the API docker image and pushes it to the GitLab docker registry
 # # When this job finishes you will need to use the glv-cloud-cli reset command
 # # To deploy the new image
-# build-api-image:
-#   stage: build
-#   image: docker:git
+build-api-image:
+    stage: build
+    image: docker:git
 #   needs:
 #     - tests
 #   variables:
