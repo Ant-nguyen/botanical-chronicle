@@ -7,21 +7,19 @@ const PlantCard = (plant) => {
                 to={`/plants/${plant.plant.id}`}
             >
                 <div className="card ">
-                        <img
-                            src={plant.plant.picture_url}
-                            className="card-img-top img-fluid"
-                            style={{
-                                width: '100%',
-                                aspectRatio: 1/1
-                            }}
-                            onError={(event) => {
-                                event.target.src =
-                                    '../public/DefaultPlant.webp'
-                                event.onerror = null
-                            }}
-                            alt="Picture of a plant"
-                        />
-
+                    <img
+                        src={plant.plant.picture_url}
+                        className="card-img-top img-fluid"
+                        style={{
+                            width: '100%',
+                            aspectRatio: 1 / 1,
+                        }}
+                        onError={(event) => {
+                            event.target.src = '../public/DefaultPlant.webp'
+                            event.onerror = null
+                        }}
+                        alt="Picture of a plant"
+                    />
 
                     <div className="card-body">
                         <h4 className="card-title">{plant.plant.name}</h4>

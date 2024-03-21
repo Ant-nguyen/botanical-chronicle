@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import ModalLogin from '../components/ModalLogin'
+import bgUrl from '../public/onboard-bg.webp'
 
 const Onboard = () => {
     const navigate = useNavigate()
@@ -13,7 +14,7 @@ const Onboard = () => {
             className="position-relative"
             style={{
                 backgroundSize: 'cover',
-                backgroundImage: "url('../public/onboard-bg.webp')",
+                backgroundImage: `url(${bgUrl})`,
                 width: '100vw',
                 height: '100vh',
                 paddingRight: '25px',
