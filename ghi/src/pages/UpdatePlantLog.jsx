@@ -117,17 +117,16 @@ const UpdatePlantLog = () => {
                             <label htmlFor="weather">Weather</label>
                         </div>
 
-                        <div className="form-floating mb-3">
-                            <input
+                        <div className="form mb-3">
+                            <label htmlFor="condition">Plant note</label>
+                            <textarea
                                 value={plantLogForm.condition}
                                 onChange={handleFormChange}
+                                rows="4"
                                 id="condition"
-                                placeholder="Plant Condition"
-                                type="text"
                                 className="form-control"
                                 name="condition"
-                            />
-                            <label htmlFor="detail">Plant Condition</label>
+                            ></textarea>
                         </div>
                         <div className="row">
                             <button

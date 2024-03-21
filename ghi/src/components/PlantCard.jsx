@@ -16,7 +16,7 @@ const PlantCard = (plant) => {
                             }}
                             onError={(event) => {
                                 event.target.src =
-                                    'https://i.imgur.com/qQiNxzB.png'
+                                    '../public/DefaultPlant.webp'
                                 event.onerror = null
                             }}
                             alt="Picture of a plant"
@@ -25,9 +25,9 @@ const PlantCard = (plant) => {
 
                     <div className="card-body">
                         <h4 className="card-title">{plant.plant.name}</h4>
-                        <h6 className="card-subtitle mb-2 text-body-secondary fst-italic">
+                        <h5 className="card-subtitle mb-2 text-body-secondary fst-italic">
                             {plant.plant.species}
-                        </h6>
+                        </h5>
                         <p className="card-text">
                             {plant.plant.detail.length > 150
                                 ? `${plant.plant.detail.slice(0, 150)} ...`

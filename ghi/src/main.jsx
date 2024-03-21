@@ -6,7 +6,6 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import PlantForm from './pages/PlantForm.jsx'
 import Home from './pages/Home.jsx'
 import Onboard from './pages/Onboard.jsx'
-import Login from './pages/Login.jsx'
 import Signup from './pages/Signup.jsx'
 import Error from './pages/Error.jsx'
 import PlantDetail from './pages/PlantDetail.jsx'
@@ -26,7 +25,6 @@ const router = createBrowserRouter([
         children: [
             { index: true, element: <Home /> },
             { path: 'onboard', element: <Onboard /> },
-            { path: 'login', element: <Login /> },
             { path: 'signup', element: <Signup /> },
             { path: 'plants/add', element: <PlantForm /> },
             { path: 'plants/:plant_id', element: <PlantDetail /> },

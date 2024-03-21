@@ -15,21 +15,24 @@ const Nav = () => {
 
     useEffect(() => {
         if (result.isSuccess) {
-            navigate('/')
+            navigate('/onboard')
         } else if (result.isError) {
             console.error('Error:', result.error)
         }
     }, [result])
 
     return (
-        <nav className="navbar navbar-expand-lg bg-body-tertiary">
+        <nav
+            className="navbar navbar-expand-lg "
+            style={{ backgroundColor: '#F2F2F2' }}
+        >
             <div className="container-fluid">
                 <NavLink
                     className="navbar-brand"
                     to={account ? '/' : '/onboard'}
                 >
                     <img
-                        src="https://i.imgur.com/1phSFnw.png"
+                        src="/../public/Logo-trans.webp"
                         alt="logo"
                         width="55"
                         height="55"

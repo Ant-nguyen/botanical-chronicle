@@ -34,7 +34,7 @@ const ModalWarning = ({ mutationParams, mutation, navloc }) => {
                                 className="modal-title fs-5"
                                 id="staticBackdropLabel"
                             >
-                                Modal title
+                                Confirmation
                             </h1>
                             <button
                                 type="button"

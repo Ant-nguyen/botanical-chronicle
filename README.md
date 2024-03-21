@@ -81,7 +81,7 @@ When I enter the following details:
 | Field | Value |
 | Plant Name | Monty |
 | Species | Monstera |
-| Picture | https://example.com/ficus-benjamina.jpg |
+| Picture | https://example.com/not-a-real-link/ficus-benjamina.jpg |
 | Description | A beautiful indoor plant with glossy leaves |
 And I tap on the "Create" button
 Then the plant should be added to "My Garden"
