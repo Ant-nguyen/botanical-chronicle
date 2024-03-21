@@ -1,7 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import ModalLogin from '../components/ModalLogin'
 
-
 const Onboard = () => {
     const navigate = useNavigate()
 
@@ -14,8 +13,7 @@ const Onboard = () => {
             className="position-relative"
             style={{
                 backgroundSize: 'cover',
-                backgroundImage:
-                    "url('../public/onboard-bg.webp')",
+                backgroundImage: "url('../public/onboard-bg.webp')",
                 width: '100vw',
                 height: '100vh',
                 paddingRight: '25px',
@@ -46,7 +44,7 @@ const Onboard = () => {
                             Plant memories
                         </h1>
                     </div>
-                    <div className="d-flex justify-content-center ">
+                    <div className="d-flex justify-content-center">
                         <h2
                             className="display-2 text-white text-center"
                             style={{
@@ -71,7 +69,6 @@ const Onboard = () => {
                         className="btn btn-success"
                         data-bs-toggle="modal"
                         data-bs-target="#staticBackdrop"
-                        // onClick={loginClick}
                     >
                         Login
                     </button>
