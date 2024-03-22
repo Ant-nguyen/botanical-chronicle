@@ -1,4 +1,4 @@
-## 3/21/24
+## 3/22/24
 Today we wrapped up our project and talked a bit of the future of our project after submitting YAY
 
 ## 3/21/24
