@@ -6,7 +6,7 @@ import navLogo from '../public/Logo-trans.webp'
 
 const Nav = () => {
     const navigate = useNavigate()
-    const [logoutAccount, result] = useLogoutAccountMutation()
+    const [logoutAccount, logoutResult] = useLogoutAccountMutation()
     const { data: account } = useGetTokenQuery()
 
     const logoutClick = async (event) => {
@@ -15,12 +15,12 @@ const Nav = () => {
     }
 
     useEffect(() => {
-        if (result.isSuccess) {
+        if (logoutResult.isSuccess) {
             navigate('/onboard')
-        } else if (result.isError) {
-            console.error('Error:', result.error)
+        } else if (logoutResult.isError) {
+            console.error('Error:', logoutResult.error)
         }
-    }, [result, navigate])
+    }, [logoutResult, navigate])
 
     return (
         <nav

@@ -33,7 +33,7 @@ const PlantDetail = () => {
                     {plant.species}
                 </h3>
                 <p className="d-flex justify-content-center">{plant.detail}</p>
-                {token.account.id === plant.account_id && (
+                {token?.account?.id === plant.account_id && (
                     <NavLink
                         className="d-flex justify-content-center link-underline link-underline-opacity-0"
                         to={`/plants/edit/${plant_id}`}
@@ -45,7 +45,7 @@ const PlantDetail = () => {
                     <PlantLogList />
                 </div>
 
-                {token.account.id === plant.account_id && (
+                {token?.account?.id === plant.account_id && (
                     <NavLink to={`/plants/${plant_id}/plant-logs/add`}>
                         <button className="btn btn-success">
                             Add Plant Log
