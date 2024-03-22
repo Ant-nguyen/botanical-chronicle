@@ -56,7 +56,7 @@ We are targeting people who are passionate about growing their plants and want t
 4. Build and run the project using Docker with these commands:
 
 ```
-docker volume create mongo-db
+docker volume create mongo-data
 docker-compose build
 docker-compose up
 ```
