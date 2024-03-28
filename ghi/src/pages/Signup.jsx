@@ -7,7 +7,7 @@ import {
 } from '../store/apiSlice'
 
 const Signup = () => {
-    const [loginAccount] = useLoginAccountMutation()
+    const [loginAccount,] = useLoginAccountMutation()
     const [createAccount, result] = useCreateAccountMutation()
     const [errorMessage, setErrorMessage] = useState('')
     const [formData, setFormData] = useState({
@@ -15,6 +15,7 @@ const Signup = () => {
         email: '',
         password: '',
     })
+    const [clickable,setClickable] = useState(true)
     const [passwordConfirmation, setPasswordConfirmation] = useState('')
     const navigate = useNavigate()
     const { data: loginToken } = useGetTokenQuery()
@@ -25,7 +26,14 @@ const Signup = () => {
         if (passwordConfirmation !== formData.password) {
             setErrorMessage('Passwords do not match')
         } else {
+            setClickable(false)
             createAccount(formData)
+            if (result.isSuccess) {
+                loginAccount({
+                    username: formData.username,
+                    password: formData.password,
+                })
+            } 
         }
     }
 
@@ -36,16 +44,11 @@ const Signup = () => {
     }, [loginToken, navigate])
 
     useEffect(() => {
-        if (result.isSuccess) {
-            loginAccount({
-                username: formData.username,
-                password: formData.password,
-            })
-        } else if (result.isError) {
+        if (result.isError) {
             setErrorMessage(result.error.data.detail)
-            console.error('Error:', result.error)
-        }
-    }, [result, formData, loginAccount])
+            setClickable(true)
+        } 
+    }, [result])
 
     const handleFormChange = (event) => {
         const key = event.target.name
@@ -125,7 +128,9 @@ const Signup = () => {
                             </label>
                         </div>
 
-                        <button className="btn btn-primary">Sign Up</button>
+                        <button className="btn btn-primary" disabled={!clickable}>
+                            Sign Up
+                        </button>
                     </form>
                 </div>
             </div>

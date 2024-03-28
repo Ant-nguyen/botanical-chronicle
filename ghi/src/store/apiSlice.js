@@ -21,6 +21,7 @@ export const bcApi = createApi({
                 body: data,
                 method: 'post',
             }),
+            invalidatesTags: ['Account']
         }),
 
         loginAccount: builder.mutation({

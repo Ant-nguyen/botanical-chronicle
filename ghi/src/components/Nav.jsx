@@ -32,12 +32,7 @@ const Nav = () => {
                     className="navbar-brand"
                     to={account ? '/' : '/onboard'}
                 >
-                    <img
-                        src= {navLogo}
-                        alt="logo"
-                        width="55"
-                        height="55"
-                    ></img>
+                    <img src={navLogo} alt="logo" width="55" height="55"></img>
                     Botanical Chronicle
                 </NavLink>
                 <button
@@ -58,13 +53,16 @@ const Nav = () => {
                     <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li className="d-flex align-items-center nav-item">
                             {account && (
-                                <button
-                                    type="button"
-                                    className="btn btn-outline-danger"
-                                    onClick={logoutClick}
-                                >
-                                    Log Out
-                                </button>
+                                <div>
+                                    <div>Hello {account.account.username}</div>
+                                    <button
+                                        type="button"
+                                        className="btn btn-outline-danger"
+                                        onClick={logoutClick}
+                                    >
+                                        Log Out
+                                    </button>
+                                </div>
                             )}
                         </li>
                     </ul>
